@@ -1,0 +1,37 @@
+// Clearfix
+cf()
+  &:after
+    content ""
+    display table
+    clear both
+
+// Fonts
+fonts(lista, font=null)
+  if font isnt null
+    unshift(lista, font)
+  font-family lista
+
+monospace(font = null)
+  lista = Consolas, "Liberation Mono", Courier
+  fonts(lista, font)
+
+sansSerif(font = null)
+  lista = "Helvetica Neue", Helvetica, sans-serif
+  fonts(lista, font)
+
+serif(font = null)
+  lista = "Times New Roman", Times, serif
+  fonts(lista, font)
+
+// Retina
+retina()
+  @media only screen
+    @media (-webkit-min-device-pixel-ratio: 2),
+           (min-resolution: dpi2dppx(192dpi))
+      {block}
+
+// Animation
+keyframes(kf-name)
+  vendors = official
+  @keyframes {kf-name}
+    {block}

@@ -1,0 +1,13 @@
+{
+  "preset": "google",
+  "validateIndentation": 2,
+  "esnext": true,
+  "disallowQuotedKeysInObjects": null,
+  "requireCapitalizedComments": null,
+  "excludeFiles": [
+    "build/**",
+    "node_modules/**",
+    "test/**",
+    "tmp/**"
+  ]
+}
