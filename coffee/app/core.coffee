@@ -1,14 +1,20 @@
 'use strict'
 
 define [
-  'templates/sample'
-], (template) ->
+  'components/modal'
+], (Modal) ->
 
-  qS = document.querySelector.bind document
+  modal = new Modal
 
-  $info = qS '#info'
-  $info.insertAdjacentHTML 'afterbegin', template
-    name: navigator.appName
-    version: navigator.appVersion
+  btnOpen = document.querySelector '#btnModalOpen'
+  btnClose = document.querySelector '#btnModalClose'
+
+  btnOpen.addEventListener 'click', () ->
+    modal.open()
+    return
+
+  btnClose.addEventListener 'click', () ->
+    modal.close()
+    return
 
   return

@@ -6,5 +6,6 @@ define 'config', ->
     paths:
       app: '../app'
       templates: '../templates'
+      components: '../components'
 
   return
