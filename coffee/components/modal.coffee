@@ -26,27 +26,25 @@
 
       @id = ++GUID
 
+      # Options
       @opts =
         esc: true
         beforeOpen: null
         prefix: 'modalLayout'
-        overlay: 'modalLayout__overlay'
-        box: 'modalLayout__box'
-        content: 'xxx'
+        content: ''
       utility.objectAssign @opts, opts
+      @opts.overlay =  "#{@opts.prefix}__overlay"
+      @opts.box = "#{@opts.prefix}__box"
 
-      @modalOpen = "#{@opts.prefix}-#{@id}--open"
-
+      # Content
       contentIsStr = false
-
-      if utility.isElement @opts.content
-        @content = @opts.content
+      @content = @opts.content
+      if utility.isElement @content
+        contentIsStr = false
+      else if typeof @content == 'string' and @content isnt ''
+        contentIsStr = true
       else
-        if typeof @opts.content == 'string'
-          @content = doc.querySelector @opts.content
-          if @content is null
-            @content = @opts.content
-            contentIsStr = true
+        throw 'content must be a HTMLElement or string'
 
       # Template
       r =
@@ -72,6 +70,8 @@
       if @opts.esc is true
         @box.addEventListener 'keyup', @, false
 
+      # Style
+      @modalOpen = "#{@opts.prefix}-#{@id}--open"
       @_style()
 
     template: ->
