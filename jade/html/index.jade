@@ -14,12 +14,20 @@ html
   body
     article.basic-app
       h1 Modal Example
-      p Making a better and awesome web!!!
-      - for (var i = 0; i < 100; i++)
-        p xxx
+      - for (var i = 0; i < 50; i++)
+        p ⬇⬇⬇
 
       button#btnModalOpen(type="button") Open
-      button#btnModalClose(type="button") Close
       button#btnModalDestroy(type="button") Destroy
+
+      - for (var i = 0; i < 30; i++)
+        p ⬆⬆⬆
+
+    #modalContent
+      | press 
+      b ESC
+      |  or 
+      b TAP HERE
+
 
 

@@ -4,6 +4,8 @@
   "esnext": true,
   "disallowQuotedKeysInObjects": null,
   "requireCapitalizedComments": null,
+  "disallowMultipleVarDecl": null,
+  "maximumLineLength": null,
   "excludeFiles": [
     "build/**",
     "node_modules/**",

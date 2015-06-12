@@ -95,7 +95,16 @@
       v.nodeType is 1 and
       typeof v.nodeName is 'string'
 
+  escapeHtml = (html) ->
+    String(html)
+      .replace /&/g, '&amp;'
+      .replace /"/g, '&quot;'
+      .replace /'/g, '&#39;'
+      .replace /</g, '&lt;'
+      .replace />/g, '&gt;'
+
   'transitionEvent': transitionEvent
   'animationEvent': animationEvent
   'objectAssign': objectAssign
   'isElement': isElement
+  'escapeHtml': escapeHtml

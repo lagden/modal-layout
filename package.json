@@ -1,15 +1,17 @@
 {
   "name": "modal-layout",
-  "description": "Apenas um mockup",
+  "description": "Modal your way",
+  "version": "0.1.0",
   "author": {
     "name": "Thiago Lagden"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "volo add -skipexists",
+    "test": "grunt test",
     "start": "grunt && http-server dev -o -a127.0.0.1 -p8285"
   },
   "volo": {
+    "url": "https://raw.github.com/jrburke/requirejs/{version}/require.js",
     "baseUrl": "dev/js/lib",
     "dependencies": {
       "require": "github:jrburke/requirejs/2.1.17",
@@ -24,18 +26,20 @@
     "grunt-concurrent": "^1.0.0",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-coffee": "^0.13.0",
+    "grunt-contrib-connect": "^0.10.1",
     "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-cssmin": "^0.12.3",
     "grunt-contrib-jade": "^0.14.1",
+    "grunt-contrib-qunit": "^0.7.0",
     "grunt-contrib-requirejs": "^0.4.4",
     "grunt-contrib-stylus": "^0.21.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-fixmyjs": "^0.3.0",
+    "grunt-jscs": "^1.8.0",
     "grunt-minify-html": "^2.0.0",
     "http-server": "^0.8.0",
     "jit-grunt": "^0.9.1",
     "time-grunt": "^1.2.1",
     "volo": "^0.3.6"
-  },
-  "version": "0.1.0"
+  }
 }

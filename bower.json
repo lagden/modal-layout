@@ -1,5 +1,7 @@
 {
-    "name": "modal-layout",
-    "version": "0.0.1",
-    "dependencies": {}
+  "name": "modal-layout",
+  "version": "0.1.0",
+  "dependencies": {
+    "eventEmitter": "~4.2.11"
+  }
 }

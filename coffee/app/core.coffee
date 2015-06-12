@@ -4,22 +4,48 @@ define [
   'components/modal'
 ], (Modal) ->
 
-  modal = new Modal content: 'xyz'
+  qS = document.querySelector.bind document
 
-  btnOpen = document.querySelector '#btnModalOpen'
-  btnClose = document.querySelector '#btnModalClose'
-  btnDestroy = document.querySelector '#btnModalDestroy'
+  # Buttons
+  btnOpen = qS '#btnModalOpen'
+  btnDestroy = qS '#btnModalDestroy'
 
-  btnOpen.addEventListener 'click', () ->
+  # Modal Content
+  modalContent = qS '#modalContent'
+
+  # Modal
+  modal = new Modal content: modalContent
+
+  # Modal Events
+  modal.on 'open', ->
+    console.log 'modal opened'
+    return
+
+  modal.on 'close', ->
+    console.log 'modal closed'
+    return
+
+  modal.on 'destroy', ->
+    console.log 'modal destroyed'
+    return
+
+  openModal = ->
     modal.open()
     return
 
-  btnClose.addEventListener 'click', () ->
+  closeModal = ->
     modal.close()
     return
 
-  btnDestroy.addEventListener 'click', () ->
+  destroyModal = ->
+    modalContent.removeEventListener 'click', closeModal
+    btnOpen.removeEventListener 'click', openModal
+    btnDestroy.removeEventListener 'click', destroyModal
     modal.destroy()
     return
+
+  modalContent.addEventListener 'click', closeModal
+  btnOpen.addEventListener 'click', openModal
+  btnDestroy.addEventListener 'click', destroyModal
 
   return

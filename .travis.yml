@@ -1,0 +1,14 @@
+sudo: false
+language: node_js
+node_js:
+- '0.12'
+before_script:
+  - git config --global user.email "lagden@gmail.com"
+  - git config --global user.name "Thiago Lagden"
+before_install: npm install -g grunt-cli
+install: npm install
+script: bash bin/deploy-gh-pages.sh
+env:
+  global:
+  - GH_REF=github.com/lagden/modal-layout.git
+  - secure: le+7q4WEu/vCHDFkOtEgXT7eFqSExgKNcwPGHKhY2WmADKhbv+5sxnAEwlfDWR1uU4iUCuH4qoEW6XZFJoUZ+TekoefWtVzfJZWKDmCWSvQAOb9dlw1TmxVcANAQzwhAXUAO8iUDR6JaPh3KxKB1Ugke0MrjBzCbRUJII8YQDDqi/THvuFG3dSIDyCvZPlvbFSVrg3P0ChPJU2M0QlSF3gPhvH3/1969R2s/p+CsaqWGHH+EFQRTqG70ifgUcO9n8f2f6B+Qy4wzIpNQ6b8wM40/DnP6z/ho6gAlQ0If42cAFGKIZtnFbty3hh1zuCvWzMRIy5So3TSxrRc9KMCRB43qQNRBwgpGKq5JwHj1pIesWhrSd0ORBNtnvI/eBSOEFp5atHFAGHb711//T/MXeFjuUojHv2gGPn3YxM3yNT5zV6O/5EWx2GQpwO/o8+c4FYSKWoAa6LDbL0Bbu+OlCsteY45/MO8gkKVEmg2rs9RL+TUGAkbI5MQECC+29h6rJL4xl4wAjbYh1d1lEKvBEjLl8sNobxb9p0iYyG/le9UNCFBVlEAsNI+2A0Tq40XuRxscatnoGjAp1zkswikUBLJDF2dDVadMrwzPFEJVxP4Wd27dx0Q5Be34pHsCxO0BYeCbb/D+nMToLNTPX+sNxR+mVmrqo96kXlFE4T8SSUw=
