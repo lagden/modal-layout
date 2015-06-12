@@ -1,10 +1,8 @@
-.sass-cache
 node_modules
-dev/js/*
-dev/css/*
-dev/**/*.html
 tmp/*
 build/*
+dev/*
+!dev/favicon.ico
 
 # Others
 cgi-bin

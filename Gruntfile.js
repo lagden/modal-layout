@@ -47,10 +47,18 @@ module.exports = function(grunt) {
       }
     },
     connect: {
-      server: {
+      test: {
         options: {
           base: '.',
           port: 8182
+        }
+      },
+      dev: {
+        options: {
+          livereload: true,
+          base: 'dev',
+          port: 8183,
+          open: true
         }
       }
     },
@@ -114,7 +122,10 @@ module.exports = function(grunt) {
       },
       css: {
         files: ['<%= project.css %>/**/*'],
-        tasks: ['styles']
+        tasks: ['styles'],
+        options: {
+          livereload: true,
+        }
       },
       jadeToHtml: {
         files: ['<%= project.jade %>/html/**/*.jade'],
@@ -176,7 +187,7 @@ module.exports = function(grunt) {
           useStrict: true,
           baseUrl: '<%= project.dev %>/js/lib',
           mainConfigFile: '<%= project.dev %>/js/config.js',
-          name: 'almond',
+          name: '../../../node_modules/almond/almond',
           include: ['../main'],
           out: '<%= project.prod %>/js/main.js'
         }
@@ -198,24 +209,6 @@ module.exports = function(grunt) {
         }]
       }
     },
-    minifyHtml: {
-      dynamic: {
-        options: {
-          comments: false,
-          conditionals: true,
-          spare: false,
-          quotes: true,
-          cdata: false,
-          empty: false
-        },
-        files: [{
-          expand: true,
-          cwd: '<%= project.dev %>',
-          src: ['**/*.html'],
-          dest: '<%= project.prod %>'
-        }]
-      }
-    },
     concurrent: {
       dev: [
         'scripts',
@@ -225,13 +218,38 @@ module.exports = function(grunt) {
       ]
     },
     clean: {
-      dist: ['<%= project.prod %>'],
+      build: ['<%= project.prod %>'],
+      dist: ['modal'],
       tmp: ['<%= project.tmp %>']
     },
     copy: {
-      dist: {
+      ico: {
         src: '<%= project.dev %>/favicon.ico',
         dest: '<%= project.prod %>/favicon.ico'
+      },
+      dist: {
+        files: [
+          {
+            expand: true,
+            cwd: '<%= project.dev %>/js/components',
+            src: '**',
+            dest: 'modal/'
+          },
+          {
+            flatten: true,
+            src: '<%= project.dev %>/css/modalLayout.css',
+            dest: 'modal/modalLayout.css'
+          }
+        ]
+      },
+    },
+    symlink: {
+      options: {
+        overwrite: false
+      },
+      require: {
+        src: 'node_modules/requirejs/require.js',
+        dest: '<%= project.dev %>/js/lib/require.js'
       }
     },
     project: {
@@ -272,8 +290,11 @@ module.exports = function(grunt) {
     }
   });
   grunt.registerTask('default', [
+    'clean:dist',
+    'symlink:require',
     'clean:tmp',
-    'concurrent:dev'
+    'concurrent:dev',
+    'copy:dist'
   ]);
   grunt.registerTask('scripts', [
     'coffee',
@@ -281,17 +302,17 @@ module.exports = function(grunt) {
     'jscs:fix'
   ]);
   grunt.registerTask('build', [
-    'clean:dist',
+    'clean:build',
     'default',
     'jade:build',
     'requirejs',
     'cssmin',
-    'minifyHtml',
-    'copy'
+    'copy:ico'
   ]);
   grunt.registerTask('serve', [
     'default',
-    'browserSync:dev',
+    // 'browserSync:dev',
+    'connect:dev',
     'watch'
   ]);
   grunt.registerTask('serve:prod', [
@@ -303,7 +324,7 @@ module.exports = function(grunt) {
     'autoprefixer'
   ]);
   grunt.registerTask('test', [
-    'connect',
+    'connect:test',
     'qunit'
   ]);
 };
