@@ -9,7 +9,7 @@ before_install:
   - npm install -g bower
   - npm install -g grunt-cli
 install: npm install
-script: bash bin/deploy-gh-pages.sh
+script: bin/deploy-gh-pages.sh
 env:
   global:
   - GH_REF=github.com/lagden/modal-layout.git
