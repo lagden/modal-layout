@@ -1,4 +1,4 @@
-# Modal Layout[![Build Status](https://travis-ci.org/lagden/modal-layout.svg?branch=master)](https://travis-ci.org/lagden/modal-layout)
+# Modal Layout [![Build Status](https://travis-ci.org/lagden/modal-layout.svg?branch=master)](https://travis-ci.org/lagden/modal-layout)
 
 > Modal your way
 
@@ -29,11 +29,17 @@ m.open()
 
 ## Api
 
+```
+ModalLayout(content [, opts])
+```
+
+---
+
 ### Parameters
 
 #### content
 
-must be a HTMLElement or string.
+`HTMLElement` or `string`.
 
 #### opts
 
@@ -44,6 +50,8 @@ must be a HTMLElement or string.
 | prefix | `'modalLayout'` | prefix used in your css |
 | escape | `false` | escape content html |
 
+---
+
 ### Methods
 
 | Methods | Description |
@@ -52,6 +60,8 @@ must be a HTMLElement or string.
 | close | hide modal |
 | destroy | destroy modal |
 | isOpen | check if modal is opened |
+
+---
 
 ### Events
 
