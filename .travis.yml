@@ -3,14 +3,14 @@ language: node_js
 node_js:
 - '0.12'
 before_script:
-  - git config --global user.email "lagden@gmail.com"
-  - git config --global user.name "Thiago Lagden"
+- git config --global user.email "lagden@gmail.com"
+- git config --global user.name "Thiago Lagden"
 before_install:
-  - npm install -g bower
-  - npm install -g grunt-cli
+- npm install -g bower
+- npm install -g grunt-cli
 install: npm install
 script: bin/deploy-gh-pages.sh
 env:
   global:
   - GH_REF=github.com/lagden/modal-layout.git
-  - secure: le+7q4WEu/vCHDFkOtEgXT7eFqSExgKNcwPGHKhY2WmADKhbv+5sxnAEwlfDWR1uU4iUCuH4qoEW6XZFJoUZ+TekoefWtVzfJZWKDmCWSvQAOb9dlw1TmxVcANAQzwhAXUAO8iUDR6JaPh3KxKB1Ugke0MrjBzCbRUJII8YQDDqi/THvuFG3dSIDyCvZPlvbFSVrg3P0ChPJU2M0QlSF3gPhvH3/1969R2s/p+CsaqWGHH+EFQRTqG70ifgUcO9n8f2f6B+Qy4wzIpNQ6b8wM40/DnP6z/ho6gAlQ0If42cAFGKIZtnFbty3hh1zuCvWzMRIy5So3TSxrRc9KMCRB43qQNRBwgpGKq5JwHj1pIesWhrSd0ORBNtnvI/eBSOEFp5atHFAGHb711//T/MXeFjuUojHv2gGPn3YxM3yNT5zV6O/5EWx2GQpwO/o8+c4FYSKWoAa6LDbL0Bbu+OlCsteY45/MO8gkKVEmg2rs9RL+TUGAkbI5MQECC+29h6rJL4xl4wAjbYh1d1lEKvBEjLl8sNobxb9p0iYyG/le9UNCFBVlEAsNI+2A0Tq40XuRxscatnoGjAp1zkswikUBLJDF2dDVadMrwzPFEJVxP4Wd27dx0Q5Be34pHsCxO0BYeCbb/D+nMToLNTPX+sNxR+mVmrqo96kXlFE4T8SSUw=
+  - secure: kvLAdf8CFFhYgIkul9XdKVGsYGxn5kuHGfSvULvXNht8icddex2NeIteAaLGiqJViHC59ITpnU5zXnwZ0GIlzJnGOmCMkU7MoxTqcmdRc8yYLZyCEpMsEhqes05+DuGbXj1bJTU6hJCu98OdITV7HroFsdhEOT89F33uWW8pQ7e4MICAEJNFwEuqrjLHedeUhHcxytXp7zLQyZF+u1lLqxaONl7xO5h8h+flfqe1SmRriz33rXR7etzBwt+IVvKOyDVhoW4Sq4rK8VAZgxsC0oISMIzvVJr838dcEztIOKVnxNLL2WvHCnTnYwuEJCh5ptFMhMIJWXTZszquLjgUwN3FF+0C40a9GT/Mpbk+HjKkNTuIueADAECIvm5PFyRlO8K7+G9w7jiytCTURRCHX4nLgDMufhllw9UDlD33IZz9zpUJS9O/1QuU6wu8/e9U7fZhkAb6XGSrVs8pvWB2SIqTA5FlsU3L+WPmrcRcVKCsICmcPDv4ruK+tXENSfeX03IUMNBOeInHvA4l1MYIX5DAVlOW+uWqwxWMS3fK8wT8nTNqR+jUyEZRph+Vqult7bWTlwqypHu/KIlXBsAxVF5ecxxuyStudEx7ZOBqiHaajd2H4B3xVJqFz6Gjg+xkaPDdP02kyy9Sgdipqw9Ea65M9yNh1eXusK+xVLuMF6Y=
