@@ -5,7 +5,9 @@ node_js:
 before_script:
   - git config --global user.email "lagden@gmail.com"
   - git config --global user.name "Thiago Lagden"
-before_install: npm install -g grunt-cli
+before_install:
+  - npm install -g bower
+  - npm install -g grunt-cli
 install: npm install
 script: bash bin/deploy-gh-pages.sh
 env:
