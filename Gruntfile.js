@@ -282,8 +282,8 @@ module.exports = function(grunt) {
           },
           {
             flatten: true,
-            src: '<%= project.dev %>/css/modalLayout.css',
-            dest: 'modal/modalLayout.css'
+            src: '<%= project.dev %>/css/modal.css',
+            dest: 'modal/modal.css'
           }
         ]
       },

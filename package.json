@@ -27,7 +27,8 @@
       "tmp",
       "*.md",
       "Gruntfile.*",
-      "bower.json"
+      "bower.json",
+      "package.json"
     ]
   },
   "devDependencies": {
