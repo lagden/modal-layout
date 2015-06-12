@@ -49,6 +49,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-fixmyjs": "^0.3.0",
     "grunt-jscs": "^1.8.0",
+    "grunt-minify-html": "^2.0.0",
     "http-server": "^0.8.0",
     "jit-grunt": "^0.9.1",
     "requirejs": "^2.1.18",

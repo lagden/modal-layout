@@ -231,6 +231,27 @@ module.exports = function(grunt) {
       }
     },
 
+    minifyHtml: {
+      dynamic: {
+        options: {
+          comments: false,
+          conditionals: true,
+          spare: false,
+          quotes: true,
+          cdata: false,
+          empty: false
+        },
+        files: [
+          {
+            expand: true,
+            cwd: '<%= project.dev %>',
+            src: ['**/*.html'],
+            dest: '<%= project.prod %>'
+          }
+        ]
+      }
+    },
+
     concurrent: {
       dev: [
         'scripts',
@@ -303,6 +324,7 @@ module.exports = function(grunt) {
     'jade:build',
     'requirejs',
     'cssmin',
+    'minifyHtml',
     'copy:ico'
   ]);
 
