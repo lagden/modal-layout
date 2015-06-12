@@ -1,16 +1,7 @@
 #!/bin/bash
 
-THIS=$(basename $0)
-DIR="$( cd -P "$( dirname "$0" )" && pwd )"
-cd $DIR
-cd ..
-CURR_FOLDER=`pwd`
-
-# Root
-cd $CURR_FOLDER
-
 set -e
-rm -rf build || exit 0
+rm -rf build
 grunt build
 cd build
 git init
