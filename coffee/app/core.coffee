@@ -14,7 +14,7 @@ define [
   modalContent = qS '#modalContent'
 
   # Modal
-  modal = new Modal content: modalContent
+  modal = new Modal modalContent
 
   # Modal Events
   modal.on 'open', ->

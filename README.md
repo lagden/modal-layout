@@ -1,35 +1,67 @@
-Basic App
-=========
+# Modal Layout[![Build Status](https://travis-ci.org/lagden/modal-layout.svg?branch=master)](https://travis-ci.org/lagden/modal-layout)
 
-Making a better and awesome web!!!
-
-## Requirement
-
-If you are using Sass as your preprocessor, you must install [libsass](http://libsass.org/) before.
-Why?! Because is more fast than Ruby version
+> Modal your way
 
 ## Install
 
-Run `npm i`
-
-### Sass
-
-**If necessary!**
-
-If you are using `OS X`, you can install `libsass` using [Homebrew](http://brew.sh/):
+Via [Bower](http://bower.io/)
 
 ```
-brew update
-brew install libsass
-brew install sassc
+bower install modal-layout
+```
+
+Via [Volo](http://volojs.org/)
+
+```
+volo add lagden/modal-layout
 ```
 
 ## Usage
 
-`npm start` or `grunt serve`
+```javascript
+var m = new ModalLayout('Awesome stuff!');
 
-## Credit
+m.on('open', function() {
+  console.log('modal is open')
+});
+m.open()
+```
 
-| [![Thiago Lagden](http://gravatar.com/avatar/bfe5ce4cb209f3e4f4584e1f5aa209c6.png?s=144)](http://lagden.in) |
-| :-----------: |
-| [Thiago Lagden](http://lagden.in) (creator) |
+## Api
+
+### Parameters
+
+#### content
+
+must be a HTMLElement or string.
+
+#### opts
+
+| Options | Default | Description |
+| ----------- | ----------- | ----------- |
+| esc | `true` | close modal pressing `esc` |
+| beforeOpen | `null` | call a method before open modal |
+| prefix | `'modalLayout'` | prefix used in your css |
+| escape | `false` | escape content html |
+
+### Methods
+
+| Methods | Description |
+| ----------- | ----------- |
+| open | show modal |
+| close | hide modal |
+| destroy | destroy modal |
+| isOpen | check if modal is opened |
+
+### Events
+
+| Events |
+| ----------- |
+| open |
+| close |
+| destroy |
+
+
+## License
+
+MIT © [Thiago Lagden](http://lagden.in)

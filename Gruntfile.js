@@ -1,9 +1,19 @@
 'use strict';
+
 module.exports = function(grunt) {
   require('jit-grunt')(grunt);
   require('time-grunt')(grunt);
   grunt.file.defaultEncoding = 'utf8';
   grunt.initConfig({
+    project: {
+      'prod': 'build',
+      'dev': 'dev',
+      'tmp': 'tmp',
+      'coffee': 'coffee',
+      'jade': 'jade',
+      'css': 'stylus'
+    },
+
     coffee: {
       compile: {
         options: {
@@ -19,6 +29,7 @@ module.exports = function(grunt) {
         }]
       }
     },
+
     fixmyjs: {
       options: {
         jshintrc: '.jshintrc',
@@ -35,6 +46,7 @@ module.exports = function(grunt) {
         }]
       }
     },
+
     jscs: {
       fix: {
         options: {
@@ -46,29 +58,7 @@ module.exports = function(grunt) {
         }
       }
     },
-    connect: {
-      test: {
-        options: {
-          base: '.',
-          port: 8182
-        }
-      },
-      dev: {
-        options: {
-          livereload: true,
-          base: 'dev',
-          port: 8183,
-          open: true
-        }
-      }
-    },
-    qunit: {
-      all: {
-        options: {
-          urls: ['http://localhost:8182/test/modal.html']
-        }
-      }
-    },
+
     jade: {
       js: {
         options: {
@@ -115,6 +105,37 @@ module.exports = function(grunt) {
         }]
       }
     },
+
+    stylus: {
+      'dev': {
+        'options': {
+          'compress': false
+        },
+        'files': [{
+          'expand': true,
+          'flatten': false,
+          'cwd': '<%= project.css %>',
+          'src': ['*.styl'],
+          'dest': '<%= project.tmp %>/css',
+          'ext': '.css'
+        }]
+      }
+    },
+
+    autoprefixer: {
+      'options': {
+        'browsers': ['last 1 version']
+      },
+      'files': {
+        'expand': true,
+        'flatten': false,
+        'cwd': '<%= project.tmp %>/css',
+        'src': ['*.css'],
+        'dest': '<%= project.dev %>/css',
+        'ext': '.css'
+      }
+    },
+
     watch: {
       script: {
         files: ['<%= project.coffee %>/**/*.coffee'],
@@ -122,10 +143,7 @@ module.exports = function(grunt) {
       },
       css: {
         files: ['<%= project.css %>/**/*'],
-        tasks: ['styles'],
-        options: {
-          livereload: true,
-        }
+        tasks: ['styles']
       },
       jadeToHtml: {
         files: ['<%= project.jade %>/html/**/*.jade'],
@@ -136,6 +154,7 @@ module.exports = function(grunt) {
         tasks: ['jade:js']
       }
     },
+
     browserSync: {
       dev: {
         bsFiles: {
@@ -161,6 +180,7 @@ module.exports = function(grunt) {
         }
       }
     },
+
     requirejs: {
       almond: {
         options: {
@@ -193,6 +213,7 @@ module.exports = function(grunt) {
         }
       }
     },
+
     cssmin: {
       dynamic: {
         options: {
@@ -209,6 +230,7 @@ module.exports = function(grunt) {
         }]
       }
     },
+
     concurrent: {
       dev: [
         'scripts',
@@ -217,11 +239,13 @@ module.exports = function(grunt) {
         'jade:js'
       ]
     },
+
     clean: {
       build: ['<%= project.prod %>'],
       dist: ['modal'],
       tmp: ['<%= project.tmp %>']
     },
+
     copy: {
       ico: {
         src: '<%= project.dev %>/favicon.ico',
@@ -243,6 +267,7 @@ module.exports = function(grunt) {
         ]
       },
     },
+
     symlink: {
       options: {
         overwrite: false
@@ -252,43 +277,12 @@ module.exports = function(grunt) {
         dest: '<%= project.dev %>/js/lib/require.js'
       }
     },
-    project: {
-      'prod': 'build',
-      'dev': 'dev',
-      'tmp': 'tmp',
-      'coffee': 'coffee',
-      'jade': 'jade',
-      'css': 'stylus'
-    },
-    autoprefixer: {
-      'options': {
-        'browsers': ['last 1 version']
-      },
-      'files': {
-        'expand': true,
-        'flatten': false,
-        'cwd': '<%= project.tmp %>/css',
-        'src': ['*.css'],
-        'dest': '<%= project.dev %>/css',
-        'ext': '.css'
-      }
-    },
-    stylus: {
-      'dev': {
-        'options': {
-          'compress': false
-        },
-        'files': [{
-          'expand': true,
-          'flatten': false,
-          'cwd': '<%= project.css %>',
-          'src': ['*.styl'],
-          'dest': '<%= project.tmp %>/css',
-          'ext': '.css'
-        }]
-      }
+
+    qunit: {
+      all: ['test/**/*.html']
     }
   });
+
   grunt.registerTask('default', [
     'clean:dist',
     'symlink:require',
@@ -296,11 +290,13 @@ module.exports = function(grunt) {
     'concurrent:dev',
     'copy:dist'
   ]);
+
   grunt.registerTask('scripts', [
     'coffee',
     'fixmyjs:fix',
     'jscs:fix'
   ]);
+
   grunt.registerTask('build', [
     'clean:build',
     'default',
@@ -309,22 +305,24 @@ module.exports = function(grunt) {
     'cssmin',
     'copy:ico'
   ]);
+
   grunt.registerTask('serve', [
     'default',
-    // 'browserSync:dev',
-    'connect:dev',
+    'browserSync:dev',
     'watch'
   ]);
+
   grunt.registerTask('serve:prod', [
     'build',
     'browserSync:dist'
   ]);
+
   grunt.registerTask('styles', [
     'stylus',
     'autoprefixer'
   ]);
+
   grunt.registerTask('test', [
-    'connect:test',
     'qunit'
   ]);
 };

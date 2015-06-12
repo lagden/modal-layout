@@ -13,7 +13,7 @@
                              require('wolfy87-eventemitter'),
                              require('./lib/util')
   else
-    window.modalLayout = factory window,
+    window.ModalLayout = factory window,
                                  window.EventEmitter,
                                  window.utility
   return
@@ -28,7 +28,7 @@
   docBody = doc.body || doc.querySelector 'body'
 
   class Modal extends EventEmitter
-    constructor: (opts) ->
+    constructor: (content, opts) ->
 
       @id = ++GUID
 
@@ -37,13 +37,12 @@
         esc: true
         beforeOpen: null
         prefix: 'modalLayout'
-        content: ''
         escape: false
       utility.objectAssign @opts, opts
       @opts.box = "#{@opts.prefix}__box"
 
       # Content
-      @content = @opts.content
+      @content = content
       if utility.isElement @content
         contentIsStr = false
       else if typeof @content == 'string' and @content isnt ''

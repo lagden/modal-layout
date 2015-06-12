@@ -1,14 +1,12 @@
 'use strict';
 
 var body = document.body;
-var m = new modalLayout({
-  content: 'Awesome'
-});
+var m = new ModalLayout('Awesome');
 
 QUnit.test('throws', function(assert) {
   assert.throws(
     function() {
-      new modalLayout();
+      new ModalLayout();
     },
     /content must be a HTMLElement or string/,
     'raised error message contains \'content must be a HTMLElement or string\''

@@ -24,7 +24,7 @@ var extend = function(child, parent) {
   } else if (typeof exports === 'object') {
     module.exports = factory(window, require('wolfy87-eventemitter'), require('./lib/util'));
   } else {
-    window.modalLayout = factory(window, window.EventEmitter, window.utility);
+    window.ModalLayout = factory(window, window.EventEmitter, window.utility);
   }
 }(window, function(window, EventEmitter, utility) {
   var GUID, Modal, doc, docBody, head;
@@ -34,19 +34,18 @@ var extend = function(child, parent) {
   docBody = doc.body || doc.querySelector('body');
   return Modal = function(superClass) {
     extend(Modal, superClass);
-    function Modal(opts) {
+    function Modal(content, opts) {
       var contentIsStr, r, render;
       this.id = ++GUID;
       this.opts = {
         esc: true,
         beforeOpen: null,
         prefix: 'modalLayout',
-        content: '',
         escape: false
       };
       utility.objectAssign(this.opts, opts);
       this.opts.box = this.opts.prefix + '__box';
-      this.content = this.opts.content;
+      this.content = content;
       if (utility.isElement(this.content)) {
         contentIsStr = false;
       } else if (typeof this.content === 'string' && this.content !== '') {
