@@ -11,9 +11,8 @@
     "start": "grunt && http-server dev -o -a127.0.0.1 -p8285"
   },
   "volo": {
-    "url": "github:lagden/modal-layout/{version}#modal",
     "dependencies": {
-      "eventEmitter/EventEmitter": "github:Wolfy87/EventEmitter/v4.2.11"
+      "eventEmitter/EventEmitter": "Wolfy87/EventEmitter/~4.2.11"
     },
     "ignore": [
       "**/.*",
