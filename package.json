@@ -10,6 +10,10 @@
     "test": "grunt test",
     "start": "grunt && http-server dev -o -a127.0.0.1 -p8285"
   },
+  "main": [
+    "modal/modal.js",
+    "modal/modal.css"
+  ],
   "volo": {
     "dependencies": {
       "eventEmitter/EventEmitter": "Wolfy87/EventEmitter/~4.2.11"
