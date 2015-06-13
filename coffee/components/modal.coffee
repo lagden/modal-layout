@@ -39,7 +39,7 @@
         prefix: 'modalLayout'
         escape: false
       utility.objectAssign @opts, opts
-      @opts.box = "#{@opts.prefix}__box"
+      @opts.box = "#{@opts.prefix}"
 
       # Content
       @content = content

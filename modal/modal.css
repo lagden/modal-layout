@@ -1,4 +1,4 @@
-.modalLayout__box {
+.modalLayout {
   position: fixed;
   top: 0;
   right: 0;
@@ -19,10 +19,10 @@
   transition: -webkit-transform 0.45s, visibility 0s 0.45s;
   transition: transform 0.45s, visibility 0s 0.45s;
 }
-.modalLayout__box:focus {
+.modalLayout:focus {
   outline: none;
 }
-.modalLayout__box--open {
+.modalLayout--open {
   visibility: visible;
   -webkit-transform: translate(0%);
           transform: translate(0%);

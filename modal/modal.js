@@ -44,7 +44,7 @@ var extend = function(child, parent) {
         escape: false
       };
       utility.objectAssign(this.opts, opts);
-      this.opts.box = this.opts.prefix + '__box';
+      this.opts.box = '' + this.opts.prefix;
       this.content = content;
       if (utility.isElement(this.content)) {
         contentIsStr = false;
