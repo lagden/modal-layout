@@ -8,7 +8,7 @@
   "scripts": {
     "postinstall": "bower install",
     "test": "grunt test",
-    "start": "grunt && http-server dev -o -a127.0.0.1 -p8285"
+    "start": "grunt serve:prod"
   },
   "main": [
     "modal/modal.js",
@@ -54,7 +54,6 @@
     "grunt-fixmyjs": "^0.3.0",
     "grunt-jscs": "^1.8.0",
     "grunt-minify-html": "^2.0.0",
-    "http-server": "^0.8.0",
     "jit-grunt": "^0.9.1",
     "requirejs": "^2.1.18",
     "time-grunt": "^1.2.1"
