@@ -122,11 +122,15 @@ module.exports = function(grunt) {
       }
     },
 
-    autoprefixer: {
-      'options': {
-        'browsers': ['last 1 version']
+    postcss: {
+      options: {
+        map: false,
+        processors: [
+          require('autoprefixer-core')({browsers: 'last 2 versions'}),
+          require('csswring')
+        ]
       },
-      'files': {
+      files: {
         'expand': true,
         'flatten': false,
         'cwd': '<%= project.tmp %>/css',
@@ -344,7 +348,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('styles', [
     'stylus',
-    'autoprefixer'
+    'postcss'
   ]);
 
   grunt.registerTask('test', [
