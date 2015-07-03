@@ -174,6 +174,9 @@ module.exports = function(grunt) {
           notify: false,
           watchTask: false,
           port: 8184,
+          ghostMode: false,
+          injectChanges: false,
+          codeSync: false,
           server: {
             baseDir: ['<%= project.prod %>']
           }
