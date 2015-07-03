@@ -21,8 +21,8 @@ volo add lagden/modal-layout
 ```javascript
 var m = new ModalLayout('Awesome stuff!');
 
-m.on('open', function() {
-  console.log('modal is open')
+m.on('open', function(modalInstance) {
+  console.log('modal is open', modalInstance);
 });
 m.open()
 ```

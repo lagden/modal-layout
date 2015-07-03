@@ -114,13 +114,13 @@ var extend = function(child, parent) {
         }
         this._toogle('add');
         this.box.focus();
-        this.emitEvent('open');
+        this.emitEvent('open', [this]);
       }
     };
     Modal.prototype.close = function() {
       if (this.isOpen() === true) {
         this._toogle('remove');
-        this.emitEvent('close');
+        this.emitEvent('close', [this]);
       }
     };
     Modal.prototype.destroy = function() {

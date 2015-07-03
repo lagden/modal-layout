@@ -17,8 +17,8 @@ define [
   modal = new Modal modalContent
 
   # Modal Events
-  modal.on 'open', ->
-    console.log 'modal opened'
+  modal.on 'open', (instance)->
+    console.log 'modal opened', instance
     return
 
   modal.on 'close', ->

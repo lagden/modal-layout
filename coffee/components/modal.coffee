@@ -116,13 +116,13 @@
           @opts.beforeOpen @, @box
         @_toogle 'add'
         @box.focus()
-        @emitEvent 'open'
+        @emitEvent 'open', [@]
       return
 
     close: ->
       if @isOpen() is true
         @_toogle 'remove'
-        @emitEvent 'close'
+        @emitEvent 'close', [@]
       return
 
     destroy: ->
