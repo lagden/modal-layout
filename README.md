@@ -10,12 +10,6 @@ Via [Bower](http://bower.io/)
 bower install modal-layout
 ```
 
-Via [Volo](http://volojs.org/)
-
-```
-volo add lagden/modal-layout
-```
-
 ## Usage
 
 ```javascript

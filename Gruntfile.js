@@ -126,8 +126,7 @@ module.exports = function(grunt) {
       options: {
         map: false,
         processors: [
-          require('autoprefixer-core')({browsers: 'last 2 versions'}),
-          require('csswring')
+          require('autoprefixer')({browsers: 'last 2 versions'})
         ]
       },
       files: {
@@ -303,6 +302,10 @@ module.exports = function(grunt) {
       require: {
         src: 'node_modules/requirejs/require.js',
         dest: '<%= project.dev %>/js/lib/require.js'
+      },
+      EventEmitter: {
+        src: 'node_modules/wolfy87-eventemitter/EventEmitter.js',
+        dest: '<%= project.dev %>/js/lib/eventEmitter/EventEmitter.js'
       }
     },
 
