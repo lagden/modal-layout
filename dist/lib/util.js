@@ -1,9 +1,11 @@
+
 /*!
  * Utility
  * Some helpers
  * http://lagden.github.io/modal-layout
  * MIT license
  */
+
 /* global define */
 (function(window, factory) {
   'use strict';
@@ -14,7 +16,7 @@
   } else {
     window.utility = factory();
   }
-}(window, function() {
+})(window, function() {
   var animationEvent, detect, escapeHtml, isElement, objectAssign, transitionEvent;
   detect = function(lista, d) {
     var item;
@@ -28,26 +30,10 @@
   };
   transitionEvent = function(d) {
     var VENDOR;
-    VENDOR = [
-      [
-        'transition',
-        'transitionend'
-      ],
-      [
-        'MozTransition',
-        'mozTransitionEnd'
-      ],
-      [
-        'OTransition',
-        'oTransitionEnd'
-      ],
-      [
-        'webkitTransition',
-        'webkitTransitionEnd'
-      ]
-    ];
+    VENDOR = [['transition', 'transitionend'], ['MozTransition', 'mozTransitionEnd'], ['OTransition', 'oTransitionEnd'], ['webkitTransition', 'webkitTransitionEnd']];
     return detect(VENDOR, d)[1];
   };
+
   /* Animation
    * 1 = Start
    * 2 = Iteration
@@ -55,32 +41,7 @@
    */
   animationEvent = function(d) {
     var VENDOR;
-    VENDOR = [
-      [
-        'animation',
-        'animationstart',
-        'animationiteration',
-        'animationend'
-      ],
-      [
-        'MozAnimation',
-        'mozAnimationStart',
-        'mozAnimationIteration',
-        'mozAnimationEnd'
-      ],
-      [
-        'OAnimation',
-        'oAnimationStart',
-        'oAnimationIteration',
-        'oAnimationEnd'
-      ],
-      [
-        'webkitAnimation',
-        'webkitAnimationStart',
-        'webkitAnimationIteration',
-        'webkitAnimationEnd'
-      ]
-    ];
+    VENDOR = [['animation', 'animationstart', 'animationiteration', 'animationend'], ['MozAnimation', 'mozAnimationStart', 'mozAnimationIteration', 'mozAnimationEnd'], ['OAnimation', 'oAnimationStart', 'oAnimationIteration', 'oAnimationEnd'], ['webkitAnimation', 'webkitAnimationStart', 'webkitAnimationIteration', 'webkitAnimationEnd']];
     return detect(VENDOR, d);
   };
   objectAssign = function(a, b) {
@@ -107,4 +68,4 @@
     'isElement': isElement,
     'escapeHtml': escapeHtml
   };
-}));
+});

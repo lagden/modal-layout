@@ -1,41 +1,48 @@
 {
   "name": "modal-layout",
-  "version": "0.3.0",
   "description": "Modal your way",
-  "main": [
-    "modal/modal.js",
-    "modal/modal.css"
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Thiago Lagden",
+      "email": "lagden@gmail.com",
+      "homepage": "http://lagden.in"
+    }
   ],
-  "repository": "lagden/modal-layout",
-  "author": {
-    "name": "Thiago Lagden",
-    "email": "lagden@gmail.com"
-  },
+  "main": [
+    "dist/modal.js",
+    "dist/modal.css"
+  ],
   "moduleType": [
     "amd",
-    "globals"
+    "globals",
+    "node"
   ],
-  "keywords": [
-    "modal",
-    "simple"
-  ],
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lagden/modal-layout.git"
+  },
   "ignore": [
-    "**/.*",
     "bin",
     "build",
     "coffee",
     "dev",
     "jade",
-    "node_modules",
     "stylus",
     "test",
-    "tmp",
+    "node_modules",
     "*.md",
     "Gruntfile.*",
-    "package.json"
+    "package.json",
+    ".*"
+  ],
+  "keywords": [
+    "modal",
+    "simple",
+    "basic"
   ],
   "dependencies": {
+    "lagden-utils": "~0.3.0",
     "eventEmitter": "~4.2.11"
   }
 }

@@ -1,14 +1,25 @@
-# Modal Layout [![Build Status](https://travis-ci.org/lagden/modal-layout.svg?branch=master)](https://travis-ci.org/lagden/modal-layout)
+# Modal Layout 
+[![Build Status](https://travis-ci.org/lagden/modal-layout.svg?branch=master)](https://travis-ci.org/lagden/modal-layout)
+[![Dependency Status](https://david-dm.org/lagden/lagden/modal-layout.svg)](https://david-dm.org/lagden/lagden/modal-layout) 
+[![devDependency Status](https://david-dm.org/lagden/lagden/modal-layout/dev-status.svg)](https://david-dm.org/lagden/lagden/modal-layout#info=devDependencies) 
 
 > Modal your way
 
+
 ## Install
+
+Via [NPM](https://www.npmjs.com/)
+
+```
+npm i modal-layout --save
+```
 
 Via [Bower](http://bower.io/)
 
 ```
-bower install modal-layout
+bower install modal-layout --save
 ```
+
 
 ## Usage
 

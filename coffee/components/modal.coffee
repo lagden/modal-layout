@@ -1,24 +1,34 @@
-((window, factory) ->
+'use strict'
 
-  'use strict'
+((window, factory) ->
 
   if typeof define == 'function' and define.amd
     define [
       'eventEmitter/EventEmitter'
-      './lib/util'
-    ], (EventEmitter, utility) ->
-      factory window, EventEmitter, utility
+      'lagden-utils/dist/object-assign'
+      'lagden-utils/dist/is-element'
+      'lagden-utils/dist/escape-html'
+    ], (EventEmitter, objectAssign, isElement, escapeHtml) ->
+      factory window,
+              EventEmitter,
+              objectAssign,
+              isElement,
+              escapeHtml
   else if typeof exports == 'object'
     module.exports = factory window,
                              require('wolfy87-eventemitter'),
-                             require('./lib/util')
+                             require('lagden-utils/dist/object-assign')
+                             require('lagden-utils/dist/is-element')
+                             require('lagden-utils/dist/escape-html')
   else
     window.ModalLayout = factory window,
                                  window.EventEmitter,
-                                 window.utility
+                                 window.objectAssign,
+                                 window.isElement,
+                                 window.escapeHtml
   return
 
-) window, (window, EventEmitter, utility) ->
+) window, (window, EventEmitter, objectAssign, isElement, escapeHtml) ->
 
   # Globally unique identifiers
   GUID = 0
@@ -38,16 +48,16 @@
         beforeOpen: null
         prefix: 'modalLayout'
         escape: false
-      utility.objectAssign @opts, opts
+      objectAssign @opts, opts
       @opts.box = "#{@opts.prefix}"
 
       # Content
       @content = content
-      if utility.isElement @content
+      if isElement @content
         contentIsStr = false
       else if typeof @content == 'string' and @content isnt ''
         contentIsStr = true
-        @content = utility.escapeHtml @content if @opts.escape
+        @content = escapeHtml @content if @opts.escape
       else
         throw 'content must be a HTMLElement or string'
 
