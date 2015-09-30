@@ -1,13 +1,11 @@
 sudo: false
 language: node_js
 node_js:
-- '0.12'
+  - '4.1'
 before_script:
-- git config --global user.email "lagden@gmail.com"
-- git config --global user.name "Thiago Lagden"
-before_install:
-- npm install -g bower
-- npm install -g grunt-cli
+  - git config --global user.email "lagden@gmail.com"
+  - git config --global user.name "Thiago Lagden"
+before_install: npm install -g grunt-cli
 install: npm install
 script: bin/deploy-gh-pages.sh
 env:
