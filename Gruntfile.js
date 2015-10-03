@@ -1,24 +1,24 @@
 'use strict';
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 	grunt.file.defaultEncoding = 'utf8';
 	require('jit-grunt')(grunt);
 	require('time-grunt')(grunt);
 	grunt.initConfig({
 
 		project: {
-			'prod': 'build',
-			'dev': 'dev',
-			'coffee': 'coffee',
-			'jade': 'jade',
-			'css': 'stylus'
+			prod: 'build',
+			dev: 'dev',
+			coffee: 'coffee',
+			jade: 'jade',
+			css: 'stylus'
 		},
 
 		coffeelint: {
 			lint: {
 				options: {
-					'no_throwing_strings': {
-						'level': 'ignore'
+					no_throwing_strings: {
+						level: 'ignore'
 					}
 				},
 				files: {
@@ -91,17 +91,17 @@ module.exports = function(grunt) {
 		},
 
 		stylus: {
-			'dev': {
-				'options': {
-					'compress': false
+			dev: {
+				options: {
+					compress: false
 				},
-				'files': [{
-					'expand': true,
-					'flatten': false,
-					'cwd': '<%= project.css %>',
-					'src': ['*.styl'],
-					'dest': '<%= project.dev %>/css',
-					'ext': '.css'
+				files: [{
+					expand: true,
+					flatten: false,
+					cwd: '<%= project.css %>',
+					src: ['*.styl'],
+					dest: '<%= project.dev %>/css',
+					ext: '.css'
 				}]
 			}
 		},
@@ -116,12 +116,12 @@ module.exports = function(grunt) {
 				]
 			},
 			files: {
-				'expand': true,
-				'flatten': false,
-				'cwd': '<%= project.dev %>/css',
-				'src': ['*.css'],
-				'dest': '<%= project.dev %>/css',
-				'ext': '.css'
+				expand: true,
+				flatten: false,
+				cwd: '<%= project.dev %>/css',
+				src: ['*.css'],
+				dest: '<%= project.dev %>/css',
+				ext: '.css'
 			}
 		},
 
@@ -185,10 +185,10 @@ module.exports = function(grunt) {
 							sequences: true,
 							properties: true,
 							unused: true,
-							'hoist_funs': false,
-							'hoist_vars': false,
-							'drop_debugger': true,
-							'drop_console': true
+							hoist_funs: false,
+							hoist_vars: false,
+							drop_debugger: true,
+							drop_console: true
 						}
 					},
 					optimizeCss: 'none',
@@ -277,7 +277,7 @@ module.exports = function(grunt) {
 						dest: 'dist/modal.css'
 					}
 				]
-			},
+			}
 		},
 
 		symlink: {

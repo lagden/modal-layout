@@ -1,4 +1,5 @@
 # Modal Layout 
+[![NPM version](https://img.shields.io/npm/v/modal-layout.svg)](https://www.npmjs.com/package/modal-layout)
 [![Build Status](https://travis-ci.org/lagden/modal-layout.svg?branch=master)](https://travis-ci.org/lagden/modal-layout)
 [![Dependency Status](https://david-dm.org/lagden/modal-layout.svg)](https://david-dm.org/lagden/modal-layout) 
 [![devDependency Status](https://david-dm.org/lagden/modal-layout/dev-status.svg)](https://david-dm.org/lagden/modal-layout#info=devDependencies) 

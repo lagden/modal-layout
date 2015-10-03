@@ -1,3 +1,4 @@
+/* global document, ModalLayout, QUnit */
 'use strict';
 
 var body = document.body;

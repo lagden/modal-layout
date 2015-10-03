@@ -1,6 +1,6 @@
 {
   "name": "modal-layout",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Modal your way",
   "keywords": [
     "modal",
@@ -25,11 +25,10 @@
   "scripts": {
     "pretest": "grunt build",
     "test": "grunt test",
-    "start": "grunt serve",
-    "prepublish": "grunt test"
+    "start": "grunt serve"
   },
   "dependencies": {
-    "lagden-utils": "^0.3.0",
+    "lagden-utils": "^0.4.0",
     "wolfy87-eventemitter": "^4.2.11"
   },
   "devDependencies": {
@@ -58,5 +57,48 @@
   },
   "engines": {
     "node": ">=4.0.0"
+  },
+  "xo": {
+    "envs": [
+      "node"
+    ],
+    "esnext": true,
+    "ignores": [
+      "dist/**",
+      "build/**",
+      "dev/**",
+      "test/**"
+    ],
+    "global": [
+      "require"
+    ],
+    "rules": {
+      "global-require": 0,
+      "camelcase": [2, {"properties": "never"}],
+      "prefer-reflect": [
+        2,
+        {
+          "exceptions": [
+            "apply",
+            "call",
+            "defineProperty",
+            "getOwnPropertyDescriptor",
+            "getPrototypeOf",
+            "setPrototypeOf",
+            "isExtensible",
+            "getOwnPropertyNames",
+            "preventExtensions",
+            "delete"
+          ]
+        }
+      ],
+      "new-cap": [
+        2,
+        {
+          "newIsCap": true,
+          "capIsNew": false
+        }
+      ]
+    }
   }
 }

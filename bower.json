@@ -42,7 +42,7 @@
     "basic"
   ],
   "dependencies": {
-    "lagden-utils": "~0.3.0",
+    "lagden-utils": "~0.4.0",
     "eventEmitter": "~4.2.11"
   }
 }
