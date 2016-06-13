@@ -4,16 +4,15 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
 
 (function(window, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['eventEmitter/EventEmitter', 'lagden-utils/dist/object-assign', 'lagden-utils/dist/is-element', 'lagden-utils/dist/escape-html'], function(EventEmitter, objectAssign, isElement, escapeHtml) {
-      return factory(window, EventEmitter, objectAssign, isElement, escapeHtml);
+    define(['eventEmitter/EventEmitter', 'lagden-utils/dist/index'], function(EventEmitter, lagdenUtils) {
+      return factory(window, EventEmitter, lagdenUtils);
     });
-  } else if (typeof exports === 'object') {
-    module.exports = factory(window, require('wolfy87-eventemitter'), require('lagden-utils/dist/object-assign'), require('lagden-utils/dist/is-element'), require('lagden-utils/dist/escape-html'));
   } else {
-    window.ModalLayout = factory(window, window.EventEmitter, window.objectAssign, window.isElement, window.escapeHtml);
+    window.ModalLayout = factory(window, window.EventEmitter, window.lagdenUtils);
   }
-})(window, function(window, EventEmitter, objectAssign, isElement, escapeHtml) {
+})(window, function(window, EventEmitter, lagdenUtils) {
   var GUID, Modal, doc, docBody, head;
+  console.log(lagdenUtils);
   GUID = 0;
   doc = window.document;
   head = doc.head || doc.getElementsByTagName('head')[0];
@@ -23,6 +22,9 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
 
     function Modal(content, opts) {
       var contentIsStr, r, render;
+      if (opts == null) {
+        opts = {};
+      }
       this.id = ++GUID;
       this.opts = {
         esc: true,
@@ -30,15 +32,15 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
         prefix: 'modalLayout',
         escape: false
       };
-      objectAssign(this.opts, opts);
+      lagdenUtils.extend(this.opts, opts);
       this.opts.box = "" + this.opts.prefix;
       this.content = content;
-      if (isElement(this.content)) {
+      if (lagdenUtils.isElement(this.content)) {
         contentIsStr = false;
       } else if (typeof this.content === 'string' && this.content !== '') {
         contentIsStr = true;
         if (this.opts.escape) {
-          this.content = escapeHtml(this.content);
+          this.content = lagdenUtils.escapeHtml(this.content);
         }
       } else {
         throw 'content must be a HTMLElement or string';

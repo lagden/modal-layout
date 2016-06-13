@@ -5,30 +5,20 @@
   if typeof define == 'function' and define.amd
     define [
       'eventEmitter/EventEmitter'
-      'lagden-utils/dist/object-assign'
-      'lagden-utils/dist/is-element'
-      'lagden-utils/dist/escape-html'
-    ], (EventEmitter, objectAssign, isElement, escapeHtml) ->
+      'lagden-utils/dist/index'
+    ], (EventEmitter, lagdenUtils) ->
       factory window,
               EventEmitter,
-              objectAssign,
-              isElement,
-              escapeHtml
-  else if typeof exports == 'object'
-    module.exports = factory window,
-                             require('wolfy87-eventemitter'),
-                             require('lagden-utils/dist/object-assign')
-                             require('lagden-utils/dist/is-element')
-                             require('lagden-utils/dist/escape-html')
+              lagdenUtils
   else
     window.ModalLayout = factory window,
                                  window.EventEmitter,
-                                 window.objectAssign,
-                                 window.isElement,
-                                 window.escapeHtml
+                                 window.lagdenUtils
   return
 
-) window, (window, EventEmitter, objectAssign, isElement, escapeHtml) ->
+) window, (window, EventEmitter, lagdenUtils) ->
+
+  console.log lagdenUtils
 
   # Globally unique identifiers
   GUID = 0
@@ -38,7 +28,7 @@
   docBody = doc.body || doc.querySelector 'body'
 
   class Modal extends EventEmitter
-    constructor: (content, opts) ->
+    constructor: (content, opts = {}) ->
 
       @id = ++GUID
 
@@ -48,16 +38,16 @@
         beforeOpen: null
         prefix: 'modalLayout'
         escape: false
-      objectAssign @opts, opts
+      lagdenUtils.extend @opts, opts
       @opts.box = "#{@opts.prefix}"
 
       # Content
       @content = content
-      if isElement @content
+      if lagdenUtils.isElement @content
         contentIsStr = false
       else if typeof @content == 'string' and @content isnt ''
         contentIsStr = true
-        @content = escapeHtml @content if @opts.escape
+        @content = lagdenUtils.escapeHtml @content if @opts.escape
       else
         throw 'content must be a HTMLElement or string'
 

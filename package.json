@@ -1,6 +1,6 @@
 {
   "name": "modal-layout",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Modal your way",
   "keywords": [
     "modal",
@@ -28,8 +28,8 @@
     "start": "grunt serve"
   },
   "dependencies": {
-    "lagden-utils": "^0.4.0",
-    "wolfy87-eventemitter": "^4.2.11"
+    "lagden-utils": "3.0.0",
+    "wolfy87-eventemitter": "4.3.0"
   },
   "devDependencies": {
     "almond": "^0.3.1",
